@@ -9,7 +9,11 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.38.0",
+    "@types/node": "^20.6.1",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }
