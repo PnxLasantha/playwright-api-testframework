@@ -1,12 +1,11 @@
 import { defineConfig, devices } from '@playwright/test'
 import * as dotenv from 'dotenv'
 
-export const getEnv = () => {
-    dotenv.config({
-        override: true,
-        path: `helper/env/.stg.env`,
-    })
-}
+dotenv.config({
+    override: true,
+    path: `helper/env/.stg.env`,
+})
+
 export default defineConfig({
     testDir: './tests',
     /* Run tests in files in parallel */
@@ -73,5 +72,5 @@ export default defineConfig({
     //   url: 'http://127.0.0.1:3000',
     //   reuseExistingServer: !process.env.CI,
     // },
-    globalSetup: 'config/globalSetup.ts',
+ 
 })

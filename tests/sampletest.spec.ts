@@ -1,8 +1,8 @@
-import { test } from '../helper/fixture/fixtures'
+import { expect, test } from '../helper/fixture/fixtures'
 
 test('sample get request', async ({ requestBuilder }) => {
     const response = await requestBuilder.getRequest('/')
-    console.log(response.status())
+    expect(response.status()).toEqual(200)
 })
 
 test('sample post', async ({ requestBuilder }) => {
@@ -11,6 +11,7 @@ test('sample post', async ({ requestBuilder }) => {
         job: 'leader',
     }
     const response = await requestBuilder.postRequest('/api/users', { body: body })
-    console.log(response.status())
-    console.log(await response.json())
+    expect(response.status()).toEqual(201)
+    const json = await response.json()
+    expect(json.id).not.toBeNull()
 })
