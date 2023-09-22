@@ -1,14 +1,16 @@
-import test from '@playwright/test'
-import GetRequestBuilder from '../helper/requestBuilders/requestBuilder'
+import { test } from '../helper/fixture/fixtures'
 
-test('sampleGet', async () => {
-    const query = {
-        per_page: 1,
+test('sample get request', async ({ requestBuilder }) => {
+    const response = await requestBuilder.getRequest('/')
+    console.log(response.status())
+})
+
+test('sample post', async ({ requestBuilder }) => {
+    const body = {
+        name: 'Natsu',
+        job: 'leader',
     }
-    const url = 'https://api.github.com/repos/Microsoft/playwright/pulls'
-    const get = new GetRequestBuilder()
-    const res = await get.getRequest(url, {
-        queryParameters: query,
-    })
-    console.log(res.status())
+    const response = await requestBuilder.postRequest('/api/users', { body: body })
+    console.log(response.status())
+    console.log(await response.json())
 })
